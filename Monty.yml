@@ -1,0 +1,243 @@
+openapi: 3.0.1
+info:
+  title: Monty API
+  description: 'TODO'
+  version: "1.0"
+servers:
+- url: https://monty.cloud.example.com/rest/v1
+tags:
+- name: Knights
+  description: Manage knights
+paths:
+  /{kingdomId}/knights:
+    get:
+      tags:
+      - Knights
+      summary: 'TODO'
+      operationId: knightsIndex
+      parameters:
+      - $ref: '#/components/parameters/kingdomIdInPath'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestListOfKnights'
+    post:
+      tags:
+      - Knights
+      summary: 'TODO'
+      operationId: knightsCreate
+      parameters:
+      - $ref: '#/components/parameters/kingdomIdInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/createKnight'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestKnight'
+  /{kingdomId}/knights/{knightId}:
+    get:
+      tags:
+      - Knights
+      summary: 'TODO'
+      operationId: knightsShow
+      parameters:
+      - $ref: '#/components/parameters/kingdomIdInPath'
+      - $ref: '#/components/parameters/knightIdInPath'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestKnight'
+    put:
+      tags:
+      - Knights
+      summary: 'TODO'
+      operationId: knightsUpdate
+      parameters:
+      - $ref: '#/components/parameters/kingdomIdInPath'
+      - $ref: '#/components/parameters/knightIdInPath'
+      requestBody:
+        $ref: '#/components/requestBodies/editKnight'
+      responses:
+        202:
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestKnight'
+    delete:
+      tags:
+      - Knights
+      summary: Delete a knight
+      operationId: knightsDelete
+      parameters:
+      - $ref: '#/components/parameters/kingdomIdInPath'
+      - $ref: '#/components/parameters/knightIdInPath'
+      responses:
+        204:
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: string
+              example: {}
+components:
+  schemas:
+    RestListOfKnights:
+      type: array
+      items:
+        $ref: '#/components/schemas/RestKnight'
+    RestKnight:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'TODO'
+          format: '' # TODO
+          example: 'TODO'
+        name:
+          pattern: 'TODO'
+          type: string
+          description: 'TODO'
+          example: 'TODO'
+        age:
+          maximum: -1 # TODO
+          minimum: -1 # TODO
+          type: integer
+          description: 'TODO'
+          format: '' # TODO
+          example: -1 # TODO
+        favoriteColor:
+          type: string
+          description: 'TODO'
+          enum:
+          - 'TODO'
+        bestFriend:
+          type: string
+          description: 'TODO'
+          format: '' # TODO
+          example: 'TODO'
+        shrubberies:
+          type: array
+          description: 'TODO'
+          items:
+            $ref: '#/components/schemas/RestShrubbery'
+    RestShrubbery:
+      type: object
+      properties:
+        height:
+          minimum: -1 # TODO
+          type: number
+          description: 'TODO'
+          format: '' # TODO
+          example: -1 # TODO
+        radius:
+          minimum: -1 # TODO
+          type: number
+          description: 'TODO'
+          format: '' # TODO
+          example: -1 # TODO
+        volume:
+          minimum: -1 # TODO
+          type: number
+          description: 'TODO'
+          format: '' # TODO
+          example: -1 # TODO
+        description:
+          pattern: 'TODO'
+          type: string
+          description: 'TODO'
+          example: 'TODO'
+        price:
+          minimum: -1 # TODO
+          type: integer
+          description: 'TODO'
+          format: '' # TODO
+          example: -1 # TODO
+    RestCreateKnight:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/RestKnight/properties/name'
+        age:
+          $ref: '#/components/schemas/RestKnight/properties/age'
+        favoriteColor:
+          $ref: '#/components/schemas/RestKnight/properties/favoriteColor'
+        bestFriend:
+          $ref: '#/components/schemas/RestKnight/properties/bestFriend'
+        schrubberies:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestCreateShrubbery'
+    RestEditKnight:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/RestKnight/properties/name'
+        age:
+          $ref: '#/components/schemas/RestKnight/properties/age'
+        bestFriend:
+          $ref: '#/components/schemas/RestKnight/properties/bestFriend'
+        shrubberies:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestEditShrubbery'
+    RestCreateShrubbery:
+      type: object
+      properties:
+        height:
+          $ref: '#/components/schemas/RestShrubbery/properties/height'
+        radius:
+          $ref: '#/components/schemas/RestShrubbery/properties/radius'
+        description:
+          $ref: '#/components/schemas/RestShrubbery/properties/description'
+    RestEditShrubbery:
+      type: object
+      properties:
+        description:
+          $ref: '#/components/schemas/RestShrubbery/properties/description'
+  parameters:
+    kingdomIdInPath:
+      name: kingdomId
+      in: path
+      description: TODO
+      required: true
+      schema:
+        type: string
+    knightIdInPath:
+      name: knightId
+      in: path
+      description: TODO
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    createKnight:
+      description: TODO
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestCreateKnight'
+      required: true
+    editKnight:
+      description: TODO
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestEditKnight'
+      required: true
+  securitySchemes:
+    api_key: 
+      type: http
+      scheme: bearer
+      bearerFormat: token
+security:
+  - api_key: []
