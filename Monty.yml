@@ -105,8 +105,8 @@ components:
           type: string
           description: >-
             A globally unique identifier consisting of latin characters, digits, and hyphens.
-            ID is created automatically when a knight is created.
-            ID cannot be created or changed manually.
+            The ID is created automatically when a knight is created.
+            The ID cannot be created or changed manually.
           format: uuid
           example: b8b71701-4811-46c3-a0d6-cc7827cef1fd
         name:
@@ -139,14 +139,15 @@ components:
         bestFriend:
           type: string
           description: >-
-            The knight's best friend. It can only be ID of an existing knight.
+            The knight's best friend. It is an empty string by default.
+            The value can only set as an ID of an existing knight.
             All the shrubberies of the best friend are copied to the shrubberies'
             array of the knight and stays in the array even if the best friend
             is deleted from the kingdom.
             Once the best friend is set, this parameter cannot be changed
             unless the best friend is deleted from the kingdom.
-            When the best friend is deleted from the kingdom, this parameter automatically
-            becomes empty and a new best friend can be set.
+            When the best friend is deleted from the kingdom, the value
+            of this parameter automatically becomes an empty string and a new best friend can be set.
           format: uuid
           example: 1dae11c2-915a-43b8-9511-11036934728d
         shrubberies:
