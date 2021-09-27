@@ -16,7 +16,7 @@ paths:
     get:
       tags:
       - Knights
-      summary: Gets the list of all existing knights in a kingdom. The response does not include the previously deleted knignts.
+      summary: Gets the list of all existing knights in a kingdom. The response does not include the previously deleted knights.
       operationId: knightsIndex
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -104,7 +104,7 @@ components:
         id:
           type: string
           description: >-
-            A globally unique identifier consisting of latin characters, digits, and hyphens.
+            A globally unique identifier consisting of Latin characters, digits, and hyphens.
             The ID is created automatically when a knight is created.
             The ID cannot be created or changed manually.
           format: uuid
@@ -123,7 +123,7 @@ components:
           minimum: 18
           type: integer
           description: >-
-            The knight age in years.
+            The knight's age in years.
             The age can be increased at any time, but cannot be decreased.
           format: int32
           example: 20
@@ -135,7 +135,7 @@ components:
             * 'RED' allows having best friends with the 'GREEN' color only.
             * 'GREEN' allows having best friends with the 'BLUE' color only.
             * 'BLUE' allows having best friends with the 'RED' color only.
-            The value can only be 'GREEN' if the knight age is 18 or less.
+            The value can only be 'GREEN' if the knight's age is 18 or less.
             The color can be set once only, it cannot be changed later.
           enum:
           - RED
@@ -149,9 +149,8 @@ components:
             there are several constraints, please refer to the
             'favoriteColor' and 'price' parameters.
             The best friend is not obliged to have the knight as his best friend. 
-            All the shrubberies of the best friend are copied to the shrubberies'
-            array of the knight and stays in the array even if the best friend
-            is deleted from the kingdom.
+            All the shrubberies of the best friend are copied to the knight's shrubberies
+            and stores there even if the best friend is deleted from the kingdom.
             Once the best friend is set, this parameter cannot be changed
             unless the best friend is deleted from the kingdom.
             When the best friend is deleted from the kingdom, the value
@@ -162,7 +161,7 @@ components:
         shrubberies:
           type: array
           description: >-
-            The knight's shrubberries. Once a knight is created,
+            The knight's shrubberies. Once a knight is created,
             it is automatically assigned one shrubbery with randomized values.
             Every time the 'bestFriend' parameter is set, the shrubberies array
             is extended with the best friend's shrubberies.
@@ -214,8 +213,8 @@ components:
             The shrubbery price in pound sterling that is a product of the 'volume'
             value and the number of characters in 'description'.
             The price value is rounded down to the nearest integer.
-            The value greater than 99 means that the shrubbery is expensive.
-            If the knights has at leasr one expensive shrubbery, that knight
+            Values greater than 99 mean that the shrubbery is expensive.
+            If the knight has at least one expensive shrubbery, that knight
             cannot be set as anybody's best friend.  
             The price cannot be set or changed manually.
           format: int32
@@ -267,7 +266,7 @@ components:
       name: kingdomId
       in: path
       description: >-
-        A globally unique identifier consisting of latin characters, digits, and hyphens.
+        A globally unique identifier consisting of Latin characters, digits, and hyphens.
         When you register an account at https://monty.cloud.example.com/account,
         the API automatically sends you a response containing the 'kingdomID' parameter.
         The kingdom ID cannot be changed.
@@ -277,7 +276,7 @@ components:
     knightIdInPath:
       name: knightId
       in: path
-      description: A globally unique identifier consisting of latin characters, digits, and hyphens.
+      description: A globally unique identifier consisting of Latin characters, digits, and hyphens.
       required: true
       schema:
         $ref: '#/components/schemas/RestKnight/properties/id'
