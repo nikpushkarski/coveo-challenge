@@ -1,7 +1,10 @@
-openapi: 3.0.1
+openapi: "3.0.1"
 info:
   title: Monty API
-  description: 'TODO'
+  description: >-
+    This API contains CRUD methods to manage knights in a kingdom.
+    To use this API, you must register a free account at
+    https://monty.cloud.example.com/account.
   version: "1.0"
 servers:
 - url: https://monty.cloud.example.com/rest/v1
@@ -13,7 +16,7 @@ paths:
     get:
       tags:
       - Knights
-      summary: 'TODO'
+      summary: Gets the list of all existing knights in a kingdom. The response does not include the previously deleted knignts.
       operationId: knightsIndex
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -27,7 +30,7 @@ paths:
     post:
       tags:
       - Knights
-      summary: 'TODO'
+      summary: Creates a knight with the specified parameters.
       operationId: knightsCreate
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -44,7 +47,7 @@ paths:
     get:
       tags:
       - Knights
-      summary: 'TODO'
+      summary: Gets the details of the specified knight.
       operationId: knightsShow
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -59,7 +62,7 @@ paths:
     put:
       tags:
       - Knights
-      summary: 'TODO'
+      summary: Updates the specified knight.
       operationId: knightsUpdate
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -76,7 +79,7 @@ paths:
     delete:
       tags:
       - Knights
-      summary: Delete a knight
+      summary: Deletes the specified knight.
       operationId: knightsDelete
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -100,34 +103,60 @@ components:
       properties:
         id:
           type: string
-          description: 'TODO'
-          format: '' # TODO
-          example: 'TODO'
+          description: >-
+            A globally unique identifier consisting of latin characters, digits, and hyphens.
+            ID is created automatically when a knight is created.
+            ID cannot be created or changed manually.
+          format: uuid
+          example: b8b71701-4811-46c3-a0d6-cc7827cef1fd
         name:
-          pattern: 'TODO'
+          pattern: (^Sir|^S1r)\s[A-Za-z0-9]{1,252}
           type: string
-          description: 'TODO'
-          example: 'TODO'
+          description: >-
+            A name of the knight.
+            The name length should be between 5 and 256 characters long.
+            The name is not a unique property, so two or more knights can have the same name.
+            The name can be changed at any time.
+          example: Sir Brunswick
         age:
-          maximum: -1 # TODO
-          minimum: -1 # TODO
+          maximum: 65 
+          minimum: 18
           type: integer
-          description: 'TODO'
-          format: '' # TODO
-          example: -1 # TODO
+          description: >-
+            The knight age in years.
+            The age can be increased at any time, but cannot be decreased.
+          format: int32
+          example: 20
         favoriteColor:
           type: string
-          description: 'TODO'
+          description: >-
+            The favorite color of the knight.
+            The color can be set once only, it cannot be changed later.
           enum:
-          - 'TODO'
+          - RED
+          - GREEN
+          - BLUE
         bestFriend:
           type: string
-          description: 'TODO'
-          format: '' # TODO
-          example: 'TODO'
+          description: >-
+            The knight's best friend. It can only be ID of an existing knight.
+            All the shrubberies of the best friend are copied to the shrubberies'
+            array of the knight and stays in the array even if the best friend
+            is deleted from the kingdom.
+            Once the best friend is set, this parameter cannot be changed
+            unless the best friend is deleted from the kingdom.
+            When the best friend is deleted from the kingdom, this parameter automatically
+            becomes empty and a new best friend can be set.
+          format: uuid
+          example: 1dae11c2-915a-43b8-9511-11036934728d
         shrubberies:
           type: array
-          description: 'TODO'
+          description: >-
+            The knight's shrubberries. Once a knight is created,
+            it is automatically assigned one shrubbery with randomized values.
+            Every time the 'bestFriend' parameter is set, the shrubberies array
+            is extended with the best friend's shrubberies.
+            The shrubberies array cannot be extended manually.
           items:
             $ref: '#/components/schemas/RestShrubbery'
     RestShrubbery:
