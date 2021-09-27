@@ -266,27 +266,31 @@ components:
     kingdomIdInPath:
       name: kingdomId
       in: path
-      description: TODO
+      description: >-
+        A globally unique identifier consisting of latin characters, digits, and hyphens.
+        When you register an account at https://monty.cloud.example.com/account,
+        the API automatically sends you a response containing the 'kingdomID' parameter.
+        The kingdom ID cannot be changed.
       required: true
       schema:
         type: string
     knightIdInPath:
       name: knightId
       in: path
-      description: TODO
+      description: A globally unique identifier consisting of latin characters, digits, and hyphens.
       required: true
       schema:
-        type: string
+        $ref: '#/components/schemas/RestKnight/properties/id'
   requestBodies:
     createKnight:
-      description: TODO
+      description: The details of a new knight to create.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RestCreateKnight'
       required: true
     editKnight:
-      description: TODO
+      description: The parameters for the specified knight to update.
       content:
         application/json:
           schema:
