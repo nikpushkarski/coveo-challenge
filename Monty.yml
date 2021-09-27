@@ -110,12 +110,12 @@ components:
           format: uuid
           example: b8b71701-4811-46c3-a0d6-cc7827cef1fd
         name:
-          pattern: (^Sir|^S1r)\s[A-Za-z0-9]{1,252}
+          pattern: /(^Sir|^S1r)\s[A-Za-z0-9\s]{1,252}/
           type: string
           description: >-
-            A name of the knight.
+            The name of the knight.
             The name length should be between 5 and 256 characters long.
-            The name is not a unique property, so two or more knights can have the same name.
+            This is not a unique property, so two or more knights can have the same name.
             The name can be changed at any time.
           example: Sir Brunswick
         age:
@@ -164,34 +164,50 @@ components:
       type: object
       properties:
         height:
-          minimum: -1 # TODO
+          minimum: 0.1
           type: number
-          description: 'TODO'
-          format: '' # TODO
-          example: -1 # TODO
+          description: >-
+            The shrubbery height in meters.
+            The height is set once only, it cannot be changed later.
+          format: float
+          example: 0.5
         radius:
-          minimum: -1 # TODO
+          minimum: 0.1
           type: number
-          description: 'TODO'
-          format: '' # TODO
-          example: -1 # TODO
+          description: >-
+            The shrubbery radius in meters.
+            The radius is set once only, it cannot be changed later.
+          format: float
+          example: 0.9
         volume:
-          minimum: -1 # TODO
+          minimum: 0.1
           type: number
-          description: 'TODO'
-          format: '' # TODO
-          example: -1 # TODO
+          description: >-
+            The shrubbery volume in square meters that is calculated based on the values
+            of the 'radius' and 'height' parameters.
+            The volume value is rounded down to the nearest decimal.
+            The volume cannot be set or changed manually.
+          format: float
+          example: 0.7
         description:
-          pattern: 'TODO'
+          pattern: /nice/
           type: string
-          description: 'TODO'
-          example: 'TODO'
+          description: >-
+            An arbitrary, free-form description.
+            The description can be changed at any time.
+            Once the description is changed, the 'price' parameter is automatically
+            recalculated.
+          example: nice shrubbery for a brave knight
         price:
-          minimum: -1 # TODO
+          minimum: 1
           type: integer
-          description: 'TODO'
-          format: '' # TODO
-          example: -1 # TODO
+          description: >-
+            The shrubbery price in pound sterling that is a product of the 'volume'
+            value and the number of characters in 'description'.
+            The price value is rounded down to the nearest integer.
+            The price cannot be set or changed manually.
+          format: int32
+          example: 40
     RestCreateKnight:
       type: object
       properties:
