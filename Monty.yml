@@ -131,6 +131,11 @@ components:
           type: string
           description: >-
             The favorite color of the knight.
+            The color value defines who can be a best friend of the knight:
+            * 'RED' allows having best friends with the 'GREEN' color only.
+            * 'GREEN' allows having best friends with the 'BLUE' color only.
+            * 'BLUE' allows having best friends with the 'RED' color only.
+            The value can only be 'GREEN' if the knight age is 18 or less.
             The color can be set once only, it cannot be changed later.
           enum:
           - RED
@@ -140,14 +145,18 @@ components:
           type: string
           description: >-
             The knight's best friend. It is an empty string by default.
-            The value can only set as an ID of an existing knight.
+            The value can only be set as an ID of an existing knight;
+            there are several constraints, please refer to the
+            'favoriteColor' and 'price' parameters.
+            The best friend is not obliged to have the knight as his best friend. 
             All the shrubberies of the best friend are copied to the shrubberies'
             array of the knight and stays in the array even if the best friend
             is deleted from the kingdom.
             Once the best friend is set, this parameter cannot be changed
             unless the best friend is deleted from the kingdom.
             When the best friend is deleted from the kingdom, the value
-            of this parameter automatically becomes an empty string and a new best friend can be set.
+            of this parameter automatically becomes an empty string
+            and a new best friend can be set.
           format: uuid
           example: 1dae11c2-915a-43b8-9511-11036934728d
         shrubberies:
@@ -205,6 +214,9 @@ components:
             The shrubbery price in pound sterling that is a product of the 'volume'
             value and the number of characters in 'description'.
             The price value is rounded down to the nearest integer.
+            The value greater than 99 means that the shrubbery is expensive.
+            If the knights has at leasr one expensive shrubbery, that knight
+            cannot be set as anybody's best friend.  
             The price cannot be set or changed manually.
           format: int32
           example: 40
