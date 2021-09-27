@@ -16,7 +16,10 @@ paths:
     get:
       tags:
       - Knights
-      summary: Gets the list of all existing knights in a kingdom. The response does not include the previously deleted knights.
+      summary: >-
+        Gets the list of all existing knights in a kingdom.
+        The response does not include the previously deleted knights.
+        This is the 'index' route of the API. 
       operationId: knightsIndex
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -30,7 +33,9 @@ paths:
     post:
       tags:
       - Knights
-      summary: Creates a knight with the specified parameters.
+      summary: >-
+        Creates a knight with the specified parameters.
+        This is the 'create' route of the API.
       operationId: knightsCreate
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -47,7 +52,9 @@ paths:
     get:
       tags:
       - Knights
-      summary: Gets the details of the specified knight.
+      summary: >-
+        Gets the details of the specified knight.
+        This is the 'show' route of the API.
       operationId: knightsShow
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -62,7 +69,9 @@ paths:
     put:
       tags:
       - Knights
-      summary: Updates the specified knight.
+      summary: >-
+        Updates the specified knight.
+        This is the 'update' route of the API.
       operationId: knightsUpdate
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -79,7 +88,9 @@ paths:
     delete:
       tags:
       - Knights
-      summary: Deletes the specified knight.
+      summary: >-
+        Deletes the specified knight.
+        This is the 'delete' route of the API.
       operationId: knightsDelete
       parameters:
       - $ref: '#/components/parameters/kingdomIdInPath'
@@ -135,7 +146,8 @@ components:
             * 'RED' allows having best friends with the 'GREEN' color only.
             * 'GREEN' allows having best friends with the 'BLUE' color only.
             * 'BLUE' allows having best friends with the 'RED' color only.
-            The value can only be 'GREEN' if the knight's age is 18 or less.
+            if the knight's age is 18 or less, his color is considered
+            'GREEN' even if the value is not 'GREEN'.
             The color can be set once only, it cannot be changed later.
           enum:
           - RED
