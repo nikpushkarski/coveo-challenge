@@ -1,4 +1,5 @@
 site_name: Coveo Challenge | Nikita Pushkarskii, 2021 ©
+copyright: Nikita Pushkarskii, 2021 ©
 nav:
     - Changing Kingdom State: index.md
     - Monty API Reference: reference.md
@@ -11,3 +12,5 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: true
   - pymdownx.superfences
+extra:
+  generator: false

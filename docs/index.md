@@ -45,7 +45,7 @@ curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authori
 ```
 You will get the following response:
 
-??? example "Response (click to expand/colllapse)"
+??? example "Response (click to expand/collapse)"
 
     ```json
     [
@@ -114,7 +114,7 @@ curl -X PUT https://monty.cloud.example.com/rest/v1/{kingdomId}/knights/834b2f98
 The API will set a new description of 4 characters long, automatically recalculate the price, and send a response with the updated price:
 
 
-??? example "Response (click to expand/colllapse)"
+??? example "Response (click to expand/collapse)"
 
     ```json
     {
@@ -146,7 +146,7 @@ curl -X PUT https://monty.cloud.example.com/rest/v1/{kingdomId}/knights/b8b71701
 ```
 The response will confirm this change:
 
-??? example "Response (click to expand/colllapse)"
+??? example "Response (click to expand/collapse)"
     ```json
     {
       "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
@@ -194,7 +194,7 @@ If you know send a request to the 'index' route, you will see how your kingdom c
 curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authorization: Bearer <API key>"
 ```
 
-??? example "Response (click to expand/colllapse)"
+??? example "Response (click to expand/collapse)"
     ```json
     [
       {
@@ -312,7 +312,7 @@ Now your kingdom should be at the _Blessed State_. To check if it is true, send 
 curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authorization: Bearer <API key>"
 ```
 
-??? example "Response (click to expand/colllapse)"
+??? example "Response (click to expand/collapse)"
 
     ```json
     [
