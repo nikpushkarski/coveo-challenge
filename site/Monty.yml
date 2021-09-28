@@ -143,10 +143,15 @@ components:
           description: >-
             The favorite color of the knight.
             The color value defines who can be a best friend of the knight:
+
             * 'RED' allows having best friends with the 'GREEN' color only.
+            
             * 'GREEN' allows having best friends with the 'BLUE' color only.
+            
             * 'BLUE' allows having best friends with the 'RED' color only.
-            if the knight's age is 18 or less, his color is considered
+            
+            
+            If the knight's age is 18 or less, his color is considered
             'GREEN' even if the value is not 'GREEN'.
             The color can be set once only, it cannot be changed later.
           enum:

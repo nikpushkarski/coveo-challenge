@@ -27,14 +27,14 @@ The _Blessed State_ is considered to be the final and permanent kingdom state wi
 
 Make sure that you registered a free account at https://monty.cloud.example.com/account.
 
-Once you created an account, the Monty API sends you a response that includes:
+When you create an account, the Monty API sends you a response that includes:
 
 * API key
 * kingdomId
 
 Both API key and kingdomId are required for changing the kingdom state.
 
-> ❗ Please substitute your own API key and kingdom ID while performing the requests from this article.
+> ❗ Please substitute your own API key and kingdomId while performing the requests from this article.
 
 ## Unholy State Details <a name="unholy"></a> 
 
