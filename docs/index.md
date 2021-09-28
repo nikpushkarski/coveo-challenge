@@ -5,11 +5,14 @@ This article explains what possible kingdom states are and how to change the kin
 ## Overview
 
 Each kingdom can be in one of two states:
+
 * _Unholy State_. This is the initial state of a new kingdom right after you created an account. In that state, your kingdom has three knights: Sir Bors, Sir Gawain, and Sir Kay with a set of unique characteristics (see the [Unholy State Details](#unholy) section).
+
 * _Blessed State_. This is the state that complies with the following requirements:
-  * No new knight has been created from the _Unholy State_.
-  * Sir Bors' list of shrubberies contains four shrubberies.
-  * Sir Gawain and Sir Kay are dead.
+  
+    * No new knight has been created from the _Unholy State_.
+    * Sir Bors' list of shrubberies contains four shrubberies.
+    * Sir Gawain and Sir Kay are dead.
 
 The _Blessed State_ is considered to be the final and permanent kingdom state with no option of reversing to the _Unholy State_.
 
@@ -18,6 +21,7 @@ The _Blessed State_ is considered to be the final and permanent kingdom state wi
 Make sure that you registered a free account at https://monty.cloud.example.com/account.
 
 Once you created an account, the Monty API sends you a response that includes:
+
 * API key
 * kingdomId
 
@@ -25,7 +29,7 @@ Both API key and kingdomId are required for changing the kingdom state.
 
 > ❗ Please substitute your own API key and kingdom ID while performing the requests from this article.
 
-<a name="unholy"></a>## Unholy State Details
+## Unholy State Details <a name="unholy"></a> 
 
 To see the details of the initial state, send a request to the 'index' route:
 
@@ -273,7 +277,7 @@ Response:
 ]
 ```
 
-Sir Bors now has 4 shrubberies and you did not create any new knights, so your kingdom is on the right path to the _Blessed_State_. 
+Sir Bors now has 4 shrubberies and you did not create any new knights, so your kingdom is on the right path to the _Blessed State_. 
 
 ## Step 4. Kill Two Knights
 
@@ -345,13 +349,13 @@ Congratulations! Your kingdom meets all the requirements of the _Blessed State_:
 
 ✔ Sir Bors' list of shrubberies contains four shrubberies.
 
-✔ Sir Gawain and Sir Kay are dead
+✔ Sir Gawain and Sir Kay are dead.
 
 
 ## Conclusion
 
 The Monty API has straightforward rules implemented in its design; strictly following those rules ensures that you can easily achieve any goal.
 
-As for managing knights, the main rules here are about colors and how friendship works. In case you forget anything, do not hesitate to refer to the Monty API reference.
+As for managing knights, the main rules here are about colors and how friendship works. In case you forget anything, do not hesitate to refer to the [Monty API reference](reference).
 
 Have a happy coding!
