@@ -306,7 +306,7 @@ curl -X DELETE https://monty.cloud.example.com/rest/v1/{kingdomId}/knights/834b2
 curl -X DELETE https://monty.cloud.example.com/rest/v1/{kingdomId}/knights/1dae11c2-915a-43b8-9511-11036934728d -H "Authorization: Bearer <API key>"
 ```
 
-Now your kingdom should be at the _Blessed State_. To check if it is true, send a request to the 'index' route:
+Now your kingdom should be in the _Blessed State_. To check if it is true, send a request to the 'index' route:
 
 ```bash
 curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authorization: Bearer <API key>"
