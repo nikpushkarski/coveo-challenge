@@ -1,0 +1,8 @@
+site_name: Coveo Challenge | Nikita Pushkarskii, 2021 ©
+nav:
+    - Changing Kingdom State: index.md
+    - Monty API Reference: reference.md
+theme: 
+  name: material
+plugins:
+  - render_swagger
