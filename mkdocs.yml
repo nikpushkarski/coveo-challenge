@@ -6,3 +6,8 @@ theme:
   name: material
 plugins:
   - render_swagger
+markdown_extensions:
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences

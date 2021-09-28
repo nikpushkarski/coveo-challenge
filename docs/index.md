@@ -1,3 +1,10 @@
+<style>
+  code {
+    white-space : pre-wrap !important;
+    word-break: break-word;
+  }
+</style>
+
 # Changing the Kingdom State
 
 This article explains what possible kingdom states are and how to change the kingdom state.
@@ -38,58 +45,60 @@ curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authori
 ```
 You will get the following response:
 
-```json
-[
-    {
-        "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
-        "name": "Sir Bors",
-        "age": 18,
-        "favoriteColor": "RED",
-        "bestFriend": "",
-        "shrubbery": [
-            {
-                "height": 0.5,
-                "radius": 0.5,
-                "volume": 0.3,
-                "description": "nice and small",
-                "price": 4
-            }
-        ]
-    },
-    {
-        "id": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
-        "name": "Sir Gawain",
-        "age": 30,
-        "favoriteColor": "GREEN",
-        "bestFriend": "",
-        "shrubbery": [
-            {
-                "height": 1.5,
-                "radius": 2,
-                "volume": 18.8,
-                "description": "beautifully nice",
-                "price": 300
-            }
-        ]
-    },
-    {
-        "id": "1dae11c2-915a-43b8-9511-11036934728d",
-        "name": "Sir Kay",
-        "age": 32,
-        "favoriteColor": "BLUE",
-        "bestFriend": "",
-        "shrubbery": [
-            {
-                "height": 0.2,
-                "radius": 0.8,
-                "volume": 0.4,
-                "description": "nicer than Bors'",
-                "price": 6
-            }
-        ]
-    }
-]
-```
+??? example "Response (click to expand/colllapse)"
+
+    ```json
+    [
+        {
+            "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
+            "name": "Sir Bors",
+            "age": 18,
+            "favoriteColor": "RED",
+            "bestFriend": "",
+            "shrubbery": [
+                {
+                    "height": 0.5,
+                    "radius": 0.5,
+                    "volume": 0.3,
+                    "description": "nice and small",
+                    "price": 4
+                }
+            ]
+        },
+        {
+            "id": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
+            "name": "Sir Gawain",
+            "age": 30,
+            "favoriteColor": "GREEN",
+            "bestFriend": "",
+            "shrubbery": [
+                {
+                    "height": 1.5,
+                    "radius": 2,
+                    "volume": 18.8,
+                    "description": "beautifully nice",
+                    "price": 300
+                }
+            ]
+        },
+        {
+            "id": "1dae11c2-915a-43b8-9511-11036934728d",
+            "name": "Sir Kay",
+            "age": 32,
+            "favoriteColor": "BLUE",
+            "bestFriend": "",
+            "shrubbery": [
+                {
+                    "height": 0.2,
+                    "radius": 0.8,
+                    "volume": 0.4,
+                    "description": "nicer than Bors'",
+                    "price": 6
+                }
+            ]
+        }
+    ]
+    ```
 To change the kingdom's state, you need to implement a couple of changes without adding new knights.
 
 ## Step 1. Get Rid of an Expensive Shrubbery
@@ -104,27 +113,30 @@ curl -X PUT https://monty.cloud.example.com/rest/v1/{kingdomId}/knights/834b2f98
 
 The API will set a new description of 4 characters long, automatically recalculate the price, and send a response with the updated price:
 
-```json
-{
-  "description": "Accepted",
-  "content": {
-    "id": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
-    "name": "Sir Gawain",
-    "age": 30,
-    "favoriteColor": "GREEN",
-    "bestFriend": "",
-    "shrubbery": [
-      {
-        "height": 1.5,
-        "radius": 2,
-        "volume": 18.8,
-        "description": "nice",
-        "price": 75
+
+??? example "Response (click to expand/colllapse)"
+
+    ```json
+    {
+      "description": "Accepted",
+      "content": {
+        "id": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
+        "name": "Sir Gawain",
+        "age": 30,
+        "favoriteColor": "GREEN",
+        "bestFriend": "",
+        "shrubbery": [
+          {
+            "height": 1.5,
+            "radius": 2,
+            "volume": 18.8,
+            "description": "nice",
+            "price": 75
+          }
+        ]
       }
-    ]
-  }
-}
-```
+    }
+    ```
 ## Step 2. Make Sir Bors Older
 
 Sir Bors has a favorite color of red, but since he is 18, the API would consider his favorite color to be 'GREEN'. To fix this, you need to make Sir Bors at least 19 years old:
@@ -134,24 +146,25 @@ curl -X PUT https://monty.cloud.example.com/rest/v1/{kingdomId}/knights/b8b71701
 ```
 The response will confirm this change:
 
-```json
-{
-  "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
-  "name": "Sir Bors",
-  "age": 19,
-  "favoriteColor": "RED",
-  "bestFriend": "",
-  "shrubbery": [
+??? example "Response (click to expand/colllapse)"
+    ```json
     {
-      "height": 0.5,
-      "radius": 0.5,
-      "volume": 0.3,
-      "description": "nice and small",
-      "price": 4
+      "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
+      "name": "Sir Bors",
+      "age": 19,
+      "favoriteColor": "RED",
+      "bestFriend": "",
+      "shrubbery": [
+        {
+          "height": 0.5,
+          "radius": 0.5,
+          "volume": 0.3,
+          "description": "nice and small",
+          "price": 4
+        }
+      ]
     }
-  ]
-}
-```
+    ```
 
 ## Step 3. Friends Will Be Friends
 
@@ -180,102 +193,102 @@ If you know send a request to the 'index' route, you will see how your kingdom c
 ```bash
 curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authorization: Bearer <API key>"
 ```
-Response:
 
-```json
-[
-  {
-    "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
-    "name": "Sir Bors",
-    "age": 19,
-    "favoriteColor": "RED",
-    "bestFriend": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
-    "shrubbery": [
+??? example "Response (click to expand/colllapse)"
+    ```json
+    [
       {
-        "height": 0.5,
-        "radius": 0.5,
-        "volume": 0.3,
-        "description": "nice and small",
-        "price": 4
+        "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
+        "name": "Sir Bors",
+        "age": 19,
+        "favoriteColor": "RED",
+        "bestFriend": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
+        "shrubbery": [
+          {
+            "height": 0.5,
+            "radius": 0.5,
+            "volume": 0.3,
+            "description": "nice and small",
+            "price": 4
+          },
+          {
+            "height": 1.5,
+            "radius": 2,
+            "volume": 18.8,
+            "description": "nice",
+            "price": 75
+          },
+          {
+            "height": 0.2,
+            "radius": 0.8,
+            "volume": 0.4,
+            "description": "nicer than Bors'",
+            "price": 6
+          },
+          {
+            "height": 0.5,
+            "radius": 0.5,
+            "volume": 0.3,
+            "description": "nice and small",
+            "price": 4
+          }
+        ]
       },
       {
-        "height": 1.5,
-        "radius": 2,
-        "volume": 18.8,
-        "description": "nice",
-        "price": 75
+        "id": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
+        "name": "Sir Gawain",
+        "age": 30,
+        "favoriteColor": "GREEN",
+        "bestFriend": "1dae11c2-915a-43b8-9511-11036934728d",
+        "shrubbery": [
+          {
+            "height": 1.5,
+            "radius": 2,
+            "volume": 18.8,
+            "description": "nice",
+            "price": 75
+          },
+          {
+            "height": 0.2,
+            "radius": 0.8,
+            "volume": 0.4,
+            "description": "nicer than Bors'",
+            "price": 6
+          },
+          {
+            "height": 0.5,
+            "radius": 0.5,
+            "volume": 0.3,
+            "description": "nice and small",
+            "price": 4
+          }
+        ]
       },
       {
-        "height": 0.2,
-        "radius": 0.8,
-        "volume": 0.4,
-        "description": "nicer than Bors'",
-        "price": 6
-      },
-      {
-        "height": 0.5,
-        "radius": 0.5,
-        "volume": 0.3,
-        "description": "nice and small",
-        "price": 4
+        "id": "1dae11c2-915a-43b8-9511-11036934728d",
+        "name": "Sir Kay",
+        "age": 32,
+        "favoriteColor": "BLUE",
+        "bestFriend": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
+        "shrubbery": [
+          {
+            "height": 0.2,
+            "radius": 0.8,
+            "volume": 0.4,
+            "description": "nicer than Bors'",
+            "price": 6
+          },
+          {
+            "height": 0.5,
+            "radius": 0.5,
+            "volume": 0.3,
+            "description": "nice and small",
+            "price": 4
+          }
+        ]
       }
     ]
-  },
-  {
-    "id": "834b2f98-f5a9-4664-8ca9-562b8b8a1318",
-    "name": "Sir Gawain",
-    "age": 30,
-    "favoriteColor": "GREEN",
-    "bestFriend": "1dae11c2-915a-43b8-9511-11036934728d",
-    "shrubbery": [
-      {
-        "height": 1.5,
-        "radius": 2,
-        "volume": 18.8,
-        "description": "nice",
-        "price": 75
-      },
-      {
-        "height": 0.2,
-        "radius": 0.8,
-        "volume": 0.4,
-        "description": "nicer than Bors'",
-        "price": 6
-      },
-      {
-        "height": 0.5,
-        "radius": 0.5,
-        "volume": 0.3,
-        "description": "nice and small",
-        "price": 4
-      }
-    ]
-  },
-  {
-    "id": "1dae11c2-915a-43b8-9511-11036934728d",
-    "name": "Sir Kay",
-    "age": 32,
-    "favoriteColor": "BLUE",
-    "bestFriend": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
-    "shrubbery": [
-      {
-        "height": 0.2,
-        "radius": 0.8,
-        "volume": 0.4,
-        "description": "nicer than Bors'",
-        "price": 6
-      },
-      {
-        "height": 0.5,
-        "radius": 0.5,
-        "volume": 0.3,
-        "description": "nice and small",
-        "price": 4
-      }
-    ]
-  }
-]
-```
+    ```
 
 Sir Bors now has 4 shrubberies and you did not create any new knights, so your kingdom is on the right path to the _Blessed State_. 
 
@@ -299,49 +312,49 @@ Now your kingdom should be at the _Blessed State_. To check if it is true, send 
 curl GET https://monty.cloud.example.com/rest/v1/{kingdomId}/knights -H "Authorization: Bearer <API key>"
 ```
 
-Response:
+??? example "Response (click to expand/colllapse)"
 
-```json
-[
-  {
-    "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
-    "name": "Sir Bors",
-    "age": 19,
-    "favoriteColor": "RED",
-    "bestFriend": "",
-    "shrubbery": [
+    ```json
+    [
       {
-        "height": 0.5,
-        "radius": 0.5,
-        "volume": 0.3,
-        "description": "nice and small",
-        "price": 4
-      },
-      {
-        "height": 1.5,
-        "radius": 2,
-        "volume": 18.8,
-        "description": "nice",
-        "price": 75
-      },
-      {
-        "height": 0.2,
-        "radius": 0.8,
-        "volume": 0.4,
-        "description": "nicer than Bors'",
-        "price": 6
-      },
-      {
-        "height": 0.5,
-        "radius": 0.5,
-        "volume": 0.3,
-        "description": "nice and small",
-        "price": 4
+        "id": "b8b71701-4811-46c3-a0d6-cc7827cef1fd",
+        "name": "Sir Bors",
+        "age": 19,
+        "favoriteColor": "RED",
+        "bestFriend": "",
+        "shrubbery": [
+          {
+            "height": 0.5,
+            "radius": 0.5,
+            "volume": 0.3,
+            "description": "nice and small",
+            "price": 4
+          },
+          {
+            "height": 1.5,
+            "radius": 2,
+            "volume": 18.8,
+            "description": "nice",
+            "price": 75
+          },
+          {
+            "height": 0.2,
+            "radius": 0.8,
+            "volume": 0.4,
+            "description": "nicer than Bors'",
+            "price": 6
+          },
+          {
+            "height": 0.5,
+            "radius": 0.5,
+            "volume": 0.3,
+            "description": "nice and small",
+            "price": 4
+          }
+        ]
       }
     ]
-  }
-]
-```
+    ```
 
 Congratulations! Your kingdom meets all the requirements of the _Blessed State_:
 
