@@ -1,5 +1,5 @@
 # Coveo Challenge
-This is a home assignment performed especially for Coveo Solutions Inc.
+This is a take-home assignment made for Coveo Solutions Inc.
 
 You can see the result here: https://coveo-pushkarskii.netlify.app/.
 
